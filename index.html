@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gestionaire de dépenses</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="gd.css">
+    </head>
+    <body>
+        <h1>Ajout et liste des dépenses</h1>
+        <h2>Ajouter une dépense</h2>
+        <form id="ajout_form">
+            <label for="name">Nom de la dépense</label>
+            <input type="text" id="name" name="name">
+            <label for="amount">Montant de la dépense</label>
+            <input type="number" id="amount" name="amount" min="0" step="1" inputmode="numeric">
+            <select id="category">
+                <option value="">Toutes les catégories</option>
+                <option value="alimentation">Alimentation</option>
+                <option value="logement">Logement</option>
+                <option value="transport">Transport</option>
+                <option value="factures">Factures/Servises</option>
+                <option value="course">Courses</option>
+                <option value="vetement">Vètement</option>
+                <option value="sante">Santé</option>
+                <option value="education">Education</option>
+                <option value="loisir">Loisir</option>
+                <option value="technologie">Technologie</option>
+                <option value="epargne">Epargne</option>
+                <option value="autre">Autre</option>
+            </select>
+            <button type="submit" class="btn_submit" id="btn_submit">Ajouter</button>
+
+        </form>
+
+        <H2>Mes dépenses</H2>
+        <table id="liste_depenses">
+            <thead>
+                <tr>
+                    <th>Nom de la dépense</th>
+                    <th>Montant</th>
+                    <th>Catégorie</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+        <div id="tri">
+            <h2>Trier les dépenses</h2>
+        <button id="tri_name">Trier par nom</button>
+        <button id="tri_amount">Trier par montant</button>
+        <button id="tri_category">Trier par catégorie</button>
+        </div>
+
+        <h2>Recherche des dépenses</h2>
+
+        <form id="form_filter">
+            <label for="rcategory">Catégorie</label>
+            <input type="text" id="rcategory" name="rcategory"><br>
+            <label for="ramount">Montant</label>
+            <input type="number" id="ramount" name="ramount" min="0" step="1" inputmode="numeric"><br>
+            <label for="rname">Nom de la dépense</label>
+            <input type="text" id="rname" name="rname"><br>
+
+            <button type="submit" id="resach_btn">Rechercher</button>
+        </form>
+        <script src="gd.js"></script>
+    </body>
+</html>
