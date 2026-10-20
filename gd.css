@@ -1,106 +1,293 @@
-body{
-    display:flex;
-    justify-content: center;
-    text-align: center;
-    flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
-    
+/* Palette sombre et accents cyan pour une identité visuelle technologique cohérente. */
+:root {
+    color-scheme: dark;
+    --color-primary: #22d3ee;
+    --color-primary-dark: #0891b2;
+    --color-text: #e2e8f0;
+    --color-muted: #94a3b8;
+    --color-border: #263750;
+    --color-surface: #111c2e;
+    --color-background: #080f1d;
+    --color-danger: #ef6675;
+    --shadow-card: 0 14px 36px rgba(0, 0, 0, 0.24);
 }
 
-h1{
-    font-size: 40px;
-    font-weight: bold;
-    color:#235;
-    text-decoration-line: underline;
-    text-decoration-color:#235 ;
-    
-}
-h2{
-    font-size: 30px;
-    font-weight: bold;
-    color:#235;
-    text-decoration-line: underline ;
-    text-decoration-color:#235 ;
+/* Le calcul border-box inclut padding et bordure dans les dimensions déclarées. */
+* {
+    box-sizing: border-box;
 }
 
-form{
-    border: 2px solid #235;
-    border-radius: 10px;
-    width: 500px;
-    padding: 15px;
-    font-weight: bold;
-    height: auto;
-    margin-left: 35%;
+/* La largeur maximale garde le contenu lisible sur écran large et fluide sur mobile. */
+body {
+    width: min(100% - 32px, 1080px);
+    margin: 0 auto;
+    padding: 40px 0 64px;
+    color: var(--color-text);
+    background:
+        radial-gradient(ellipse at 12% 0%, rgba(8, 145, 178, 0.13), transparent 35%),
+        var(--color-background);
+    font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.5;
 }
 
-input{
-    width:280px;
-    padding: 10px;
-    border:1px solid black;
-    background-color: #ddd;
-    border-radius: 10px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    font-size: 18px;
-
-}
-select{
-    width: 480px;
-    padding: 10px;
-    font-size: 18px;
-    
+h1,
+h2 {
+    color: var(--color-text);
+    line-height: 1.2;
 }
 
-button{
-    width: 90px;
-    height: 30px;
-    font-weight: bold;
-    color:#aaa;
-    background-color: #235;
-    border:none;
-    border-radius: 10px;
-    cursor:pointer;
-    transition: transform 0.3s ease, background-color 0.5s ease;
-}
-table{
-    border-collapse: collapse;
-
-}
-th,td{
-    border:2px solid black;
-    padding:15px;
-    cursor:pointer;
-
-}
-th{
-    font-weight: bold;
-    color:#aaa;
-    font-size: 20px;
-    background: #235;
-    
-}
-td{
-    transition: transform 0.3s ease, backgroun-color 0.5s ease;
-    font-size: 18px;
-
-}
-tr{
-     transition:  backgroun-color 0.5s ease;
-}
-.btn_submit{
-    margin-left: 70%;
-    margin-top:15px ;
-
+h1 {
+    margin: 0 0 32px;
+    color: var(--color-primary);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 750;
+    letter-spacing: -0.04em;
 }
 
-button:hover{
-    transform:scale(1.5);
-    background-color: #237;
+h2 {
+    margin: 36px 0 16px;
+    color: #cbd5e1;
+    font-size: clamp(1.25rem, 3vw, 1.65rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
-tbody tr:hover{
-    
-    background-color: #aaa;
+/* Les formulaires deviennent des panneaux cohérents avec une grille adaptable. */
+form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 18px;
+    width: 100%;
+    margin: 0;
+    padding: 24px;
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
 }
 
+label {
+    align-self: end;
+    color: #cbd5e1;
+    font-size: 0.92rem;
+    font-weight: 650;
+}
 
+input,
+select {
+    width: 100%;
+    min-width: 0;
+    min-height: 48px;
+    padding: 11px 13px;
+    border: 1px solid var(--color-border);
+    border-radius: 9px;
+    color: var(--color-text);
+    background-color: #0b1423;
+    font: inherit;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+input::placeholder {
+    color: var(--color-muted);
+}
+
+/* Un indicateur visible aide à repérer le champ actif au clavier comme à la souris. */
+input:focus,
+select:focus,
+button:focus-visible {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.18);
+}
+
+#ajout_form select,
+#ajout_form .btn_submit {
+    grid-column: 1 / -1;
+}
+
+/* Les actions restent à droite sur ordinateur sans déborder sur les petits écrans. */
+.btn_submit {
+    justify-self: end;
+}
+
+button {
+    min-height: 42px;
+    padding: 9px 16px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    color: #07131d;
+    background: var(--color-primary);
+    font: inherit;
+    font-size: 0.92rem;
+    font-weight: 650;
+    cursor: pointer;
+    transition: background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+button:hover {
+    background: var(--color-primary-dark);
+    box-shadow: 0 5px 18px rgba(34, 211, 238, 0.2);
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Le tableau reste dans son bloc et répartit ses colonnes selon l'espace disponible. */
+#liste_depenses {
+    width: 100%;
+    margin: 0 auto;
+    table-layout: fixed;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+    border-spacing: 0;
+}
+
+#liste_depenses th:nth-child(1),
+#liste_depenses td:nth-child(1) {
+    width: 32%;
+}
+
+#liste_depenses th:nth-child(2),
+#liste_depenses td:nth-child(2) {
+    width: 20%;
+}
+
+#liste_depenses th:nth-child(3),
+#liste_depenses td:nth-child(3) {
+    width: 20%;
+}
+
+#liste_depenses th:nth-child(4),
+#liste_depenses td:nth-child(4) {
+    width: 28%;
+}
+
+th,
+td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+    overflow-wrap: anywhere;
+}
+
+th {
+    color: #e2e8f0;
+    background: #123044;
+    background: linear-gradient(110deg, #123044, #164459);
+    font-size: 0.9rem;
+    font-weight: 700;
+    white-space: normal;
+}
+
+td {
+    font-size: 0.95rem;
+}
+
+td:nth-child(2) {
+    font-variant-numeric: tabular-nums;
+}
+
+tbody tr:last-child td {
+    border-bottom: 0;
+    color: var(--color-primary);
+    background: rgba(34, 211, 238, 0.08);
+    font-weight: 700;
+}
+
+tbody tr:hover {
+    background: rgba(34, 211, 238, 0.06);
+}
+
+/* Les deux actions restent visuellement distinctes sans modifier leur comportement. */
+.btn-modify,
+.btn-supprimer {
+    max-width: 100%;
+    min-height: 36px;
+    margin: 3px;
+    padding: 7px 11px;
+    font-size: 0.82rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.btn-supprimer {
+    background: var(--color-danger);
+}
+
+.btn-supprimer:hover {
+    background: #d64b5c;
+}
+
+/* Les commandes de tri se replient automatiquement lorsque l'espace manque. */
+#tri {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#tri h2 {
+    flex-basis: 100%;
+}
+
+#form_filter br {
+    display: none;
+}
+
+#form_filter button {
+    justify-self: start;
+}
+
+/* Sur téléphone, les formulaires passent sur une seule colonne et réduisent leurs marges. */
+@media (max-width: 600px) {
+    body {
+        width: min(100% - 24px, 1080px);
+        padding-top: 26px;
+    }
+
+    h1 {
+        margin-bottom: 26px;
+    }
+
+    h2 {
+        margin-top: 28px;
+    }
+
+    form {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+        padding: 18px;
+    }
+
+    #ajout_form select,
+    #ajout_form .btn_submit {
+        grid-column: auto;
+    }
+
+    .btn_submit,
+    #form_filter button {
+        justify-self: stretch;
+    }
+
+    #tri button {
+        flex: 1 1 100%;
+    }
+
+    th,
+    td {
+        padding: 11px 12px;
+    }
+}
+
+/* Réduit les animations pour les personnes qui les désactivent dans leur système. */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
